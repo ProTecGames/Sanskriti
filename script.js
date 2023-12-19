@@ -49,6 +49,12 @@ function runCode() {
           });
         }
       }
+
+      // mudranam() function syntax
+      if (line.trim().startsWith('mudranam(')) {
+        const data = line.match(/mudranam\((.*)\)/)[1];
+        output += mudranam(evaluateValue(data));
+      }
       // Add more logic for other Sanskrit commands as needed
     });
 
