@@ -1,4 +1,3 @@
-```javascript
 // script.js
 
 // Dictionary to store variables
