@@ -4,6 +4,9 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #282c34;
   color: #abb2bf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .editor-container {
@@ -11,6 +14,7 @@ body {
   justify-content: center;
   background-color: #21252b;
   padding: 10px;
+  width: 100%;
 }
 
 .tab {
@@ -34,16 +38,8 @@ body {
   color: #282c34;
 }
 
-#editor {
-  width: 50%;
-  height: 70vh;
-  overflow: auto;
-  padding: 10px;
-  margin: 0 auto;
-}
-
-#output {
-  width: 50%;
+#editor, #output {
+  width: 100%;
   height: 70vh;
   overflow: auto;
   padding: 10px;
