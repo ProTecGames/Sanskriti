@@ -92,7 +92,7 @@ function runCode() {
 }
 
 function mudranam(data) {
-  console.log(data); // Modify this line to display the output
+  return data;
 }
 
 function evaluateValue(value) {
