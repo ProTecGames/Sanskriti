@@ -17,7 +17,7 @@ function runCode() {
         return;
       }
 
-      // Variable declaration syntax
+      // Variable declaration syntax with input
       if (line.trim().includes('=')) {
         const [variable, value] = line.split('=').map(part => part.trim());
         variables[variable] = evaluateValue(value);
@@ -59,7 +59,7 @@ function runCode() {
     switchTab('output-tab', 'Output');
 
   } catch (error) {
-    outputDiv.innerHTML = `<p style="color: red;">Syntax Error: ${error.message}</p>`;
+    outputDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
   }
 }
 
@@ -82,6 +82,13 @@ function evaluateValue(value) {
     return value.replace(/[()]/g, '').split(',').map(item => item.trim());
   } else if (value.startsWith('"') && value.endsWith('"')) {
     return value.substring(1, value.length - 1); // Print data as a string
+  } else if (value.startsWith('abhivinmuln("') && value.endsWith('")')) {
+    // Input string
+    return prompt(value.substring(14, value.length - 2));
+  } else if (value.startsWith('purnanka(abhivinmuln("') && value.endsWith('"))')) {
+    // Input integer
+    const input = prompt(value.substring(21, value.length - 3));
+    return parseInt(input);
   } else {
     return eval(value); // Try printing data from variable
   }
