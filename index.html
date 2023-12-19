@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sanskriti Code Editor</title>
+  <meta name="description" content="Sanskriti Code Editor - A toy programming language project by Prakhar Doneria">
+  <meta name="keywords" content="Sanskriti, Sanskrit Programming Language, Code Editor, Prakhar Doneria, Toy Language">
+  <meta name="author" content="Prakhar Doneria">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#282c34"> <!-- Night mode background color -->
 
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <title>Sanskriti Code Editor by Prakhar Doneria</title>
 
-  
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css">
+
+  <!-- CodeMirror Theme (Optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/dracula.min.css">
+
+  <!-- Your custom styles.css link goes here -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="night-mode">
-  <div class="container">
-    <!-- Tabs -->
-    <div class="tabs">
-      <div id="editor-tab" class="tab active" onclick="switchTab('editor-tab', 'Editor')">Editor</div>
-      <div id="output-tab" class="tab" onclick="switchTab('output-tab', 'Output')">Output</div>
-    </div>
-
-    <!-- Editor and Output containers -->
-    <div class="editor-container">
-      <!-- Code Editor -->
-      <textarea id="code" class="hidden"></textarea>
-
-      <!-- Output Display -->
-      <div id="output"></div>
-    </div>
-
+  <div id="editor-container">
+    <!-- Code Editor -->
+    <textarea id="code"></textarea>
+    
     <!-- Run Button -->
     <button id="run-button" onclick="runCode()">Run</button>
+
+    <!-- Output Display -->
+    <div id="output"></div>
   </div>
 
+  <!-- CodeMirror JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js"></script>
+
+  <!-- Babel Standalone for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  
 
   <script src="script.js"></script>
 </body>
