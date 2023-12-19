@@ -3,40 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sanskriti Code Editor - A simple web-based code editor for the Sanskriti programming language.">
-  <meta name="keywords" content="Sanskriti, Sanskriti Code Editor, Sanskriti Programming Language, Code Editor, Web Development, Programming, Prakhar Doneria">
-  <meta name="author" content="Prakhar Doneri">
-
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-
-  <!-- Your custom styles.css link goes here -->
+  <meta name="author" content="Prakhar Doneria">
+  <meta name="keywords" content="Sanskriti, programming language, Sanskrit, code editor">
+  <title>Sanskriti Editor</title>
   <link rel="stylesheet" href="styles.css">
-
-  <title>Sanskriti Code Editor</title>
 </head>
-<body class="night-mode bg-gray-900 text-white font-mono">
-  <div class="flex h-screen">
-    <!-- Editor and Output Tabs -->
-    <div class="w-1/6 flex flex-col bg-gray-800">
-      <button id="editor-tab" class="tab active" onclick="switchTab('editor-tab', 'Editor')">Editor</button>
-      <button id="output-tab" class="tab" onclick="switchTab('output-tab', 'Output')">Output</button>
+<body>
+  <div class="editor-container">
+    <div class="editor-tabs">
+      <div id="editor-tab" class="tab active" onclick="switchTab('editor-tab', 'Editor')">Editor</div>
+      <div id="output-tab" class="tab" onclick="switchTab('output-tab', 'Output')">Output</div>
     </div>
-
-    <!-- Editor and Output Containers -->
-    <div class="flex-1 flex flex-col p-4">
-      <!-- Code Editor -->
-      <textarea id="code" class="flex-1 bg-gray-900 text-white p-4" placeholder="Write your Sanskriti code here..."></textarea>
-
-      <!-- Output Display -->
-      <div id="output" class="flex-1 hidden bg-gray-900 text-white p-4 overflow-auto"></div>
-    </div>
+    <div id="code" class="editor hidden" contenteditable="true" spellcheck="false" oninput="handleInput()"></div>
+    <div id="output" class="output hidden"></div>
   </div>
-
-  <!-- Run Button -->
-  <button id="run-button" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mx-auto my-2 rounded" onclick="runCode()">Run</button>
-
-  <!-- Your custom script.js link goes here -->
   <script src="script.js"></script>
 </body>
 </html>
