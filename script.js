@@ -49,6 +49,15 @@ function evaluateValue(value) {
   // Evaluate the value if it's a variable or an expression
   if (variables.hasOwnProperty(value)) {
     return variables[value];
+  } else if (value.startsWith('{') && value.endsWith('}')) {
+    // Parse and return dictionary
+    return JSON.parse(value.replace(/'/g, '"'));
+  } else if (value.startsWith('[') && value.endsWith(']')) {
+    // Parse and return list
+    return JSON.parse(value.replace(/'/g, '"'));
+  } else if (value.startsWith('(') && value.endsWith(')')) {
+    // Parse and return tuple
+    return value.replace(/[()]/g, '').split(',').map(item => item.trim());
   } else if (value.startsWith('"') && value.endsWith('"')) {
     return value.substring(1, value.length - 1); // Print data as a string
   } else {
