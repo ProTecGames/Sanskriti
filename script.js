@@ -16,6 +16,12 @@ function switchTab(tabId, section) {
 function runCode() {
   const code = document.getElementById('code').value;
   const outputDiv = document.getElementById('output');
+
+  lines.forEach(line => {
+      // Ignore lines starting with #
+      if (line.trim().startsWith('#')) {
+        return;
+      }
   
   try {
     const lines = code.split('\n');
