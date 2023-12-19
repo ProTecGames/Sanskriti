@@ -46,9 +46,12 @@ function mudranam(data) {
 }
 
 function evaluateValue(value) {
-  // Evaluate the value if it's a variable
+  // Evaluate the value if it's a variable or an expression
   if (variables.hasOwnProperty(value)) {
     return variables[value];
+  } else if (value.startsWith('data_dict[') && value.endsWith(']')) {
+    const index = parseInt(value.match(/\[(\d+)\]/)[1]);
+    return evaluateValue(variables['data_dict'][index]);
   }
 
   // Otherwise, return the original value
