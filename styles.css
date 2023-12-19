@@ -15,16 +15,38 @@ textarea {
   font-size: 16px;
 }
 
+.tab-container {
+  width: 100%;
+  text-align: center;
+  background-color: #2c303c;
+  padding: 10px 0;
+}
+
 .tab {
   cursor: pointer;
   transition: background-color 0.3s;
+  padding: 8px 16px;
+  color: #ffffff;
 }
 
 .tab:hover {
-  background-color: #2c303c;
+  background-color: #3a3e4c;
 }
 
 .tab.active {
   background-color: #61afef;
   color: #282c34; /* Active tab text color */
+}
+
+#run-button {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#run-button:hover {
+  background-color: #2980b9;
 }
