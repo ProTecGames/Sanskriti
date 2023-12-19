@@ -4,7 +4,7 @@
 const variables = {};
 
 function runCode() {
-  const code = document.getElementById('code').value;
+  const code = document.getElementById('code').innerText;
   const outputDiv = document.getElementById('output');
   
   try {
@@ -133,4 +133,16 @@ function switchTab(tabId, section) {
   // Toggle visibility of the corresponding section
   document.getElementById('code').classList.toggle('hidden', section !== 'Editor');
   document.getElementById('output').classList.toggle('hidden', section !== 'Output');
+}
+
+function handleInput() {
+  const codeDiv = document.getElementById('code');
+  const lines = codeDiv.innerText.split('\n');
+  const lineNumbersDiv = document.createElement('div');
+
+  for (let i = 1; i <= lines.length; i++) {
+    lineNumbersDiv.innerHTML += `<div class="line-number">${i}</div>`;
+  }
+
+  codeDiv.parentElement.insertBefore(lineNumbersDiv, codeDiv);
 }
