@@ -1,36 +1,31 @@
 // script.js
 
-function switchTab(tabId, section) {
-  // Remove 'active' class from all tabs
-  document.getElementById('editor-tab').classList.remove('active');
-  document.getElementById('output-tab').classList.remove('active');
-
-  // Add 'active' class to the clicked tab
-  document.getElementById(tabId).classList.add('active');
-
-  // Toggle visibility of the corresponding section
-  document.getElementById('code').classList.toggle('hidden', section !== 'Editor');
-  document.getElementById('output').classList.toggle('hidden', section !== 'Output');
-}
+// Dictionary to store variables
+const variables = {};
 
 function runCode() {
   const code = document.getElementById('code').value;
   const outputDiv = document.getElementById('output');
-
-  lines.forEach(line => {
-      // Ignore lines starting with #
-      if (line.trim().startsWith('#')) {
-        return;
-      }
   
   try {
     const lines = code.split('\n');
     let output = '';
 
     lines.forEach(line => {
+      // Ignore lines starting with #
+      if (line.trim().startsWith('#')) {
+        return;
+      }
+
+      // Variable declaration syntax
+      if (line.trim().includes('=')) {
+        const [variable, value] = line.split('=').map(part => part.trim());
+        variables[variable] = evaluateValue(value);
+      }
+
       if (line.trim().startsWith('mudranam(')) {
         const data = line.match(/mudranam\((.*)\)/)[1];
-        output += mudranam(eval(data)); // Using eval for simplicity (consider other approaches in a real implementation)
+        output += mudranam(evaluateValue(data));
       }
       // Add more logic for other Sanskrit commands as needed
     });
@@ -48,4 +43,14 @@ function runCode() {
 
 function mudranam(data) {
   return data;
+}
+
+function evaluateValue(value) {
+  // Evaluate the value if it's a variable
+  if (variables.hasOwnProperty(value)) {
+    return variables[value];
+  }
+
+  // Otherwise, return the original value
+  return value;
 }
