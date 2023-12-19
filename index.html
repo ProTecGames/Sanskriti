@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanskrit Code Editor</title>
+
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css">
+
+  <!-- CodeMirror Theme (Optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/dracula.min.css">
+
+  <!-- Your custom styles.css link goes here -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="night-mode">
+  <div id="editor-container">
+    <!-- Code Editor -->
+    <textarea id="code"></textarea>
+    
+    <!-- Run Button -->
+    <button id="run-button" onclick="runCode()">Run</button>
+
+    <!-- Output Display -->
+    <div id="output"></div>
+  </div>
+
+  <!-- CodeMirror JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js"></script>
+
+  <!-- Babel Standalone for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  
+  <!-- Your custom script.js link goes here -->
+  <script src="script.js"></script>
+</body>
+</html>
