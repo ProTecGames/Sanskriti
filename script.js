@@ -23,9 +23,31 @@ function runCode() {
         variables[variable] = evaluateValue(value);
       }
 
-      if (line.trim().startsWith('mudranam(')) {
-        const data = line.match(/mudranam\((.*)\)/)[1];
-        output += mudranam(evaluateValue(data));
+      // If-else statement syntax
+      if (line.trim().startsWith('yadi')) {
+        const condition = line.match(/yadi (.+):/)[1];
+        const blockStartIndex = lines.indexOf(line) + 1;
+        const blockEndIndex = findBlockEndIndex(lines, blockStartIndex);
+        
+        if (evaluateCondition(condition)) {
+          const ifBlock = lines.slice(blockStartIndex, blockEndIndex);
+          ifBlock.forEach(ifLine => {
+            if (ifLine.trim().startsWith('mudranam(')) {
+              const data = ifLine.match(/mudranam\((.*)\)/)[1];
+              output += mudranam(evaluateValue(data));
+            }
+            // Add more logic for other Sanskrit commands inside if block
+          });
+        } else {
+          const elseBlock = lines.slice(blockEndIndex + 1);
+          elseBlock.forEach(elseLine => {
+            if (elseLine.trim().startsWith('mudranam(')) {
+              const data = elseLine.match(/mudranam\((.*)\)/)[1];
+              output += mudranam(evaluateValue(data));
+            }
+            // Add more logic for other Sanskrit commands inside else block
+          });
+        }
       }
       // Add more logic for other Sanskrit commands as needed
     });
@@ -63,6 +85,28 @@ function evaluateValue(value) {
   } else {
     return eval(value); // Try printing data from variable
   }
+}
+
+function evaluateCondition(condition) {
+  return eval(condition);
+}
+
+function findBlockEndIndex(lines, startIndex) {
+  let stack = 0;
+
+  for (let i = startIndex; i < lines.length; i++) {
+    if (lines[i].includes(':')) {
+      stack++;
+    }
+    if (lines[i].includes('anyatra')) {
+      stack--;
+      if (stack === 0) {
+        return i;
+      }
+    }
+  }
+
+  throw new Error('Unterminated block');
 }
 
 function switchTab(tabId, section) {
