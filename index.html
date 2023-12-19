@@ -3,20 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Prakhar Doneria">
-  <meta name="keywords" content="Sanskriti, programming language, Sanskrit, code editor">
-  <title>Sanskriti Editor</title>
+  <title>Sanskriti Code Editor</title>
+
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+  
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="editor-container">
-    <div class="editor-tabs">
+<body class="night-mode">
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
       <div id="editor-tab" class="tab active" onclick="switchTab('editor-tab', 'Editor')">Editor</div>
       <div id="output-tab" class="tab" onclick="switchTab('output-tab', 'Output')">Output</div>
     </div>
-    <div id="code" class="editor hidden" contenteditable="true" spellcheck="false" oninput="handleInput()"></div>
-    <div id="output" class="output hidden"></div>
+
+    <!-- Editor and Output containers -->
+    <div class="editor-container">
+      <!-- Code Editor -->
+      <textarea id="code" class="hidden"></textarea>
+
+      <!-- Output Display -->
+      <div id="output"></div>
+    </div>
+
+    <!-- Run Button -->
+    <button id="run-button" onclick="runCode()">Run</button>
   </div>
+
+
   <script src="script.js"></script>
 </body>
 </html>
