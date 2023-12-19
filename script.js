@@ -49,13 +49,11 @@ function evaluateValue(value) {
   // Evaluate the value if it's a variable or an expression
   if (variables.hasOwnProperty(value)) {
     return variables[value];
-  } else if (value.startsWith('data_dict[') && value.endsWith(']')) {
-    const index = parseInt(value.match(/\[(\d+)\]/)[1]);
-    return evaluateValue(variables['data_dict'][index]);
+  } else if (value.startsWith('"') && value.endsWith('"')) {
+    return value.substring(1, value.length - 1); // Print data as a string
+  } else {
+    return eval(value); // Try printing data from variable
   }
-
-  // Otherwise, return the original value
-  return value;
 }
 
 function switchTab(tabId, section) {
