@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sanskriti Code Editor - A simple web-based code editor for the Sanskriti programming language.">
   <meta name="keywords" content="Sanskriti, Sanskriti Code Editor, Sanskriti Programming Language, Code Editor, Web Development, Programming, Prakhar Doneria">
-  <meta name="author" content="Prakhar Doneri">
+  <meta name="author" content="Prakhar Doneria">
 
   <!-- Tailwind CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -16,9 +16,9 @@
   <title>Sanskriti Code Editor</title>
 </head>
 <body class="night-mode bg-gray-900 text-white font-mono">
-  <div class="flex h-screen">
+  <div class="flex flex-col h-screen justify-between">
     <!-- Editor and Output Tabs -->
-    <div class="w-1/6 flex flex-col bg-gray-800">
+    <div class="w-full text-center bg-gray-800 p-4">
       <button id="editor-tab" class="tab active" onclick="switchTab('editor-tab', 'Editor')">Editor</button>
       <button id="output-tab" class="tab" onclick="switchTab('output-tab', 'Output')">Output</button>
     </div>
@@ -31,12 +31,12 @@
       <!-- Output Display -->
       <div id="output" class="flex-1 hidden bg-gray-900 text-white p-4 overflow-auto"></div>
     </div>
+
+    <!-- Run Button -->
+    <button id="run-button" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mx-auto my-2 rounded w-full" onclick="runCode()">Run</button>
+
+    <!-- Your custom script.js link goes here -->
+    <script src="script.js"></script>
   </div>
-
-  <!-- Run Button -->
-  <button id="run-button" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mx-auto my-2 rounded" onclick="runCode()">Run</button>
-
-  <!-- Your custom script.js link goes here -->
-  <script src="script.js"></script>
 </body>
 </html>
