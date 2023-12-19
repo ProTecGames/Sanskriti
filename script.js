@@ -3,6 +3,39 @@
 // Dictionary to store variables
 const variables = {};
 
+// New function to find the length of a string, list, or tuple
+function ayamah(data) {
+  if (typeof data === 'string' || Array.isArray(data) || data instanceof Set || data instanceof Map) {
+    return data.length;
+  } else {
+    throw new Error('Invalid argument type for ayamah()');
+  }
+}
+
+// New function to add as many numbers as entered
+function kulam() {
+  const numbers = Array.from(arguments);
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+// New function to subtract as many numbers as entered
+function ghatah() {
+  const numbers = Array.from(arguments);
+  return numbers.reduce((acc, curr) => acc - curr);
+}
+
+// New function to multiply as many numbers as entered
+function gunanam() {
+  const numbers = Array.from(arguments);
+  return numbers.reduce((acc, curr) => acc * curr, 1);
+}
+
+// New function to divide as many numbers as entered
+function bhajah() {
+  const numbers = Array.from(arguments);
+  return numbers.reduce((acc, curr) => acc / curr);
+}
+
 function runCode() {
   const code = document.getElementById('code').innerText;
   const outputDiv = document.getElementById('output');
@@ -54,6 +87,14 @@ function runCode() {
       if (line.trim().startsWith('mudranam(')) {
         const data = line.match(/mudranam\((.*)\)/)[1];
         output += mudranam(evaluateValue(data));
+      }
+
+      // New function calls
+      if (line.trim().startsWith('ayamah(') || line.trim().startsWith('kulam(') ||
+          line.trim().startsWith('ghatah(') || line.trim().startsWith('gunanam(') ||
+          line.trim().startsWith('bhajah(')) {
+        const data = line.match(/\((.*)\)/)[1];
+        output += mudranam(evaluateValue(`${line.trim().split('(')[0]}(${data})`));
       }
       // Add more logic for other Sanskrit commands as needed
     });
@@ -135,14 +176,6 @@ function switchTab(tabId, section) {
   document.getElementById('output').classList.toggle('hidden', section !== 'Output');
 }
 
-function handleInput() {
-  const codeDiv = document.getElementById('code');
-  const lines = codeDiv.innerText.split('\n');
-  const lineNumbersDiv = document.createElement('div');
-
-  for (let i = 1; i <= lines.length; i++) {
-    lineNumbersDiv.innerHTML += `<div class="line-number">${i}</div>`;
-  }
-
-  codeDiv.parentElement.insertBefore(lineNumbersDiv, codeDiv);
-}
+// Initial code to handle input and line numbers
+document.getElementById('code').addEventListener('input', handleInput);
+handleInput();
